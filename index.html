@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shop - Gestion des Commandes</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-light">
+
+    <div class="container my-4">
+        <h1 class="mb-4 text-primary text-center"><i class="bi bi-cup-hot-fill"></i> Coffee Shop - Gestion des Commandes</h1>
+
+        <!-- Message d'erreur -->
+        <div id="errorMessage" class="alert alert-danger d-none" role="alert">
+            Impossible de charger les commandes.
+        </div>
+
+        <!-- Statistiques -->
+        <div class="row text-center mb-4 g-3">
+            <div class="col-md-3">
+                <div class="p-3 bg-white shadow-sm rounded border-0">
+                    <h5 class="text-muted">Total Commandes</h5>
+                    <span id="totalOrders" class="fs-4 fw-bold text-primary">0</span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="p-3 bg-white shadow-sm rounded border-0">
+                    <h5 class="text-muted">Livrées</h5>
+                    <span id="deliveredOrders" class="fs-4 fw-bold text-success">0</span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="p-3 bg-white shadow-sm rounded border-0">
+                    <h5 class="text-muted">Payées</h5>
+                    <span id="paidOrders" class="fs-4 fw-bold text-info">0</span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="p-3 bg-white shadow-sm rounded border-0">
+                    <h5 class="text-muted">Montant Total</h5>
+                    <span id="totalAmount" class="fs-4 fw-bold text-dark">0 DH</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filtres et Recherche -->
+        <div class="card shadow-sm border-0 mb-4 p-3">
+            <div class="row g-3 align-items-center">
+                <div class="col-md-4">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Rechercher par client...">
+                </div>
+                <div class="col-md-8 d-flex gap-2 flex-wrap align-items-center">
+                    <button id="btnAll" class="btn btn-outline-secondary btn-sm">Tous les statuts</button>
+                    <button class="btn btn-outline-success btn-sm status-btn" data-status="Livrée">Livrée</button>
+                    <button class="btn btn-outline-warning btn-sm status-btn" data-status="En attente">En attente</button>
+                </div>
+            </div>
+        </div>
+
+        <p id="resultCount" class="text-muted fw-semibold mb-2"></p>
+
+        <!-- Tableau des commandes -->
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0 align-middle">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>Client</th>
+                                <th>Montant</th>
+                                <th>Statut</th>
+                                <th>Paiement</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ordersTableBody">
+                            <!-- Les lignes seront insérées dynamiquement ici -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Bootstrap pour les détails -->
+    <div class="modal fade" id="orderModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="modalTitle">Détails de la commande</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Client :</strong> <span id="modalClient"></span></p>
+                    <p><strong>Montant :</strong> <span id="modalAmount"></span></p>
+                    <p><strong>Statut :</strong> <span id="modalStatus"></span></p>
+                    <p><strong>Paiement :</strong> <span id="modalPayment"></span></p>
+                    <p><strong>Date :</strong> <span id="modalDate"></span></p>
+                    <h6 class="mt-4">Produits commandés :</h6>
+                    <p class="p-3 bg-light rounded" id="modalDescription"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Script Principal en module -->
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>

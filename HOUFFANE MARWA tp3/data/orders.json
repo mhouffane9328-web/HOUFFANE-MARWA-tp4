@@ -1,0 +1,74 @@
+[
+    {
+        "id": 101,
+        "client": "Sara",
+        "amount": 1250,
+        "status": "Livrée",
+        "paid": true,
+        "date": "2026-09-15",
+        "description": "Commande de matériel informatique."
+    },
+    {
+        "id": 102,
+        "client": "Yassine",
+        "amount": 850,
+        "status": "En attente",
+        "paid": false,
+        "date": "2026-09-18",
+        "description": "Commande en attente de validation."
+    },
+    {
+        "id": 103,
+        "client": "Amine",
+        "amount": 2100,
+        "status": "Livrée",
+        "paid": true,
+        "date": "2026-09-20",
+        "description": "Commande livrée et entièrement payée."
+    },
+    {
+        "id": 104,
+        "client": "Salma",
+        "amount": 430,
+        "status": "Annulée",
+        "paid": false,
+        "date": "2026-09-23",
+        "description": "Commande annulée avant expédition."
+    },
+    {
+        "id": 105,
+        "client": "Omar",
+        "amount": 1750,
+        "status": "En attente",
+        "paid": true,
+        "date": "2026-09-25",
+        "description": "Commande payée en attente de livraison."
+    },
+    {
+        "id": 106,
+        "client": "Imane",
+        "amount": 3200,
+        "status": "Livrée",
+        "paid": true,
+        "date": "2026-09-27",
+        "description": "Commande professionnelle livrée."
+    },
+    {
+        "id": 107,
+        "client": "Mehdi",
+        "amount": 700,
+        "status": "Annulée",
+        "paid": false,
+        "date": "2026-09-29",
+        "description": "Commande annulée par le client."
+    },
+    {
+        "id": 108,
+        "client": "Nora",
+        "amount": 980,
+        "status": "En attente",
+        "paid": false,
+        "date": "2026-10-01",
+        "description": "Commande en préparation."
+    }
+]

@@ -1,0 +1,208 @@
+[
+  {
+    "id": 1,
+    "name": "Nadia Rahmani",
+    "city": "Marrakech",
+    "active": true
+  },
+  {
+    "id": 2,
+    "name": "Youssef Alami",
+    "city": "Casablanca",
+    "active": true
+  },
+  {
+    "id": 3,
+    "name": "Fatima Benjelloun",
+    "city": "Rabat",
+    "active": false
+  },
+  {
+    "id": 4,
+    "name": "Mehdi Tazi",
+    "city": "Fes",
+    "active": true
+  },
+  {
+    "id": 5,
+    "name": "Salma Bennani",
+    "city": "Tangier",
+    "active": true
+  },
+  {
+    "id": 6,
+    "name": "Omar Kettani",
+    "city": "Agadir",
+    "active": false
+  }
+]
+```[cite: 2]
+
+---
+
+### 2. `data/products.json`
+* **Spécifications :** Au moins 8 produits répartis sur au moins 3 catégories différentes, contenant `id`, `name`, `category`, `price`, et `stock`[cite: 2].
+
+```json
+[
+  {
+    "id": 10,
+    "name": "Laptop",
+    "category": "Informatique",
+    "price": 8500,
+    "stock": 8
+  },
+  {
+    "id": 11,
+    "name": "Souris sans fil",
+    "category": "Informatique",
+    "price": 180,
+    "stock": 25
+  },
+  {
+    "id": 12,
+    "name": "Clavier mécanique",
+    "category": "Informatique",
+    "price": 450,
+    "stock": 15
+  },
+  {
+    "id": 13,
+    "name": "Écran 24 pouces",
+    "category": "Informatique",
+    "price": 1600,
+    "stock": 10
+  },
+  {
+    "id": 14,
+    "name": "Bureau ergonomique",
+    "category": "Mobilier",
+    "price": 2500,
+    "stock": 5
+  },
+  {
+    "id": 15,
+    "name": "Chaise de bureau",
+    "category": "Mobilier",
+    "price": 1200,
+    "stock": 12
+  },
+  {
+    "id": 16,
+    "name": "Lampe LED",
+    "category": "Décoration",
+    "price": 250,
+    "stock": 30
+  },
+  {
+    "id": 17,
+    "name": "Support PC portable",
+    "category": "Mobilier",
+    "price": 200,
+    "stock": 20
+  }
+]
+```[cite: 2]
+
+---
+
+### 3. `data/orders.json`
+* **Spécifications :** Au moins 10 commandes utilisant `customerId` et `productId` sans dupliquer les noms ou les prix, avec les statuts *Livree*, *En attente*, ou *Annulee*[cite: 2, 3].
+
+```json
+[
+  {
+    "id": 101,
+    "customerId": 1,
+    "status": "Livree",
+    "date": "2026-10-10",
+    "items": [
+      { "productId": 10, "quantity": 1 },
+      { "productId": 11, "quantity": 2 }
+    ]
+  },
+  {
+    "id": 102,
+    "customerId": 2,
+    "status": "En attente",
+    "date": "2026-10-12",
+    "items": [
+      { "productId": 12, "quantity": 1 }
+    ]
+  },
+  {
+    "id": 103,
+    "customerId": 3,
+    "status": "Annulee",
+    "date": "2026-10-13",
+    "items": [
+      { "productId": 14, "quantity": 1 }
+    ]
+  },
+  {
+    "id": 104,
+    "customerId": 4,
+    "status": "Livree",
+    "date": "2026-10-14",
+    "items": [
+      { "productId": 13, "quantity": 1 },
+      { "productId": 11, "quantity": 1 }
+    ]
+  },
+  {
+    "id": 105,
+    "customerId": 5,
+    "status": "En attente",
+    "date": "2026-10-15",
+    "items": [
+      { "productId": 15, "quantity": 2 }
+    ]
+  },
+  {
+    "id": 106,
+    "customerId": 1,
+    "status": "Livree",
+    "date": "2026-10-16",
+    "items": [
+      { "productId": 16, "quantity": 3 }
+    ]
+  },
+  {
+    "id": 107,
+    "customerId": 6,
+    "status": "Annulee",
+    "date": "2026-10-17",
+    "items": [
+      { "productId": 10, "quantity": 1 }
+    ]
+  },
+  {
+    "id": 108,
+    "customerId": 2,
+    "status": "Livree",
+    "date": "2026-10-18",
+    "items": [
+      { "productId": 17, "quantity": 2 }
+    ]
+  },
+  {
+    "id": 109,
+    "customerId": 3,
+    "status": "En attente",
+    "date": "2026-10-19",
+    "items": [
+      { "productId": 12, "quantity": 2 }
+    ]
+  },
+  {
+    "id": 110,
+    "customerId": 4,
+    "status": "Livree",
+    "date": "2026-10-20",
+    "items": [
+      { "productId": 15, "quantity": 1 },
+      { "productId": 16, "quantity": 2 }
+    ]
+  }
+]
+```[cite: 2, 3]

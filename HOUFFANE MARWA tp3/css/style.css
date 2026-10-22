@@ -1,0 +1,152 @@
+/* =========================================
+   THÈME COFFEE SHOP - CHIC & HAUT DE GAMME
+========================================= */
+
+:root {
+    --coffee-dark: #2c221e;      /* Espresso profond */
+    --coffee-medium: #5c4033;    /* Marron moka raffiné */
+    --coffee-light: #8d6e63;     /* Cappuccino doux */
+    --coffee-bg: #f9f6f0;        /* Fond crème poudré très chic */
+    --card-bg: #ffffff;          /* Blanc pur pour les cartes */
+    --accent-gold: #c5a059;      /* Touche dorée subtile luxe */
+}
+
+body {
+    /* Fond avec image de café en arrière-plan et voile crème subtil pour garder la lisibilité */
+    /* Remplace '../images/coffee-bg.jpg' par le chemin exact de ton image dans ton dossier */
+    background: linear-gradient(rgba(249, 246, 240, 0.93), rgba(249, 246, 240, 0.93)), 
+                url('../images/coffee-bg.jpg') no-repeat center center fixed !important;
+    background-size: cover !important;
+    color: var(--coffee-dark) !important;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    letter-spacing: 0.2px;
+}
+
+/* En-tête principal élégant */
+h1.text-center {
+    color: var(--coffee-dark) !important;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 2rem !important;
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+h1.text-center::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--accent-gold);
+    border-radius: 2px;
+}
+
+/* Cartes statistiques chics (Effet verre / ombre douce) */
+.p-3.bg-white, .stat-card {
+    background-color: var(--card-bg) !important;
+    border: 1px solid rgba(141, 110, 99, 0.15) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 10px 25px -5px rgba(44, 34, 30, 0.05), 0 8px 10px -6px rgba(44, 34, 30, 0.05) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.p-3.bg-white:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px -5px rgba(44, 34, 30, 0.08) !important;
+}
+
+.p-3.bg-white h5 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--coffee-light);
+    font-weight: 600;
+}
+
+/* Barre de recherche et filtres haut de gamme */
+.form-control, .form-select {
+    border: 1px solid #dcd3cc !important;
+    background-color: #ffffff !important;
+    border-radius: 8px !important;
+    padding: 10px 15px;
+    color: var(--coffee-dark) !important;
+    box-shadow: none !important;
+}
+
+.form-control:focus {
+    border-color: var(--coffee-light) !important;
+    box-shadow: 0 0 0 3px rgba(141, 110, 99, 0.15) !important;
+}
+
+/* Boutons de filtres sophistiqués */
+.btn-outline-secondary, .btn-outline-success, .btn-outline-warning, .status-btn {
+    border-radius: 8px !important;
+    font-weight: 500;
+    padding: 8px 16px;
+    transition: all 0.2s ease;
+}
+
+/* Tableau ultra-chic avec effet coins arrondis */
+.card.shadow-sm {
+    border: none !important;
+    border-radius: 14px !important;
+    overflow: hidden;
+    box-shadow: 0 12px 30px -10px rgba(44, 34, 30, 0.08) !important;
+}
+
+.table {
+    margin-bottom: 0 !important;
+    background-color: var(--card-bg) !important;
+}
+
+.table thead.table-dark, .table thead th {
+    background-color: var(--coffee-dark) !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    letter-spacing: 0.8px;
+    padding: 16px !important;
+    border: none !important;
+}
+
+.table tbody td {
+    padding: 16px !important;
+    vertical-align: middle;
+    color: #4a3b32 !important;
+    border-bottom: 1px solid #f2ede9 !important;
+}
+
+.table tbody tr:hover {
+    background-color: rgba(249, 246, 240, 0.6) !important;
+}
+
+/* Badges de statut raffinés */
+.badge, .status {
+    padding: 6px 12px !important;
+    border-radius: 20px !important;
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+/* Bouton Voir chic */
+.btn-outline-secondary.view-btn, .table .btn {
+    border-color: #dcd3cc !important;
+    color: var(--coffee-medium) !important;
+    background-color: transparent;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.table .btn:hover {
+    background-color: var(--coffee-medium) !important;
+    color: #ffffff !important;
+    border-color: var(--coffee-medium) !important;
+}
