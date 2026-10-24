@@ -1,9 +1,9 @@
 export async function loadAllData() {
   try {
     const [customersRes, productsRes, ordersRes] = await Promise.all([
-      fetch("data/customers.json"),
-      fetch("data/products.json"),
-      fetch("data/orders.json")
+      fetch("./data/customers.json"),
+      fetch("./data/products.json"),
+      fetch("./data/orders.json")
     ]);
 
     if (!customersRes.ok || !productsRes.ok || !ordersRes.ok) {
@@ -20,4 +20,3 @@ export async function loadAllData() {
     throw error;
   }
 }
-```[cite: 4, 7]

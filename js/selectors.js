@@ -1,19 +1,17 @@
-// Retrouver un client grâce à son identifiant (find)
 export function getCustomerById(customers, customerId) {
-  return customers.find(c => c.id === customerId);
+  return customers ? customers.find(c => c.id === customerId) : null;
 }
 
-// Retrouver un produit grâce à son identifiant (find)
 export function getProductById(products, productId) {
-  return products.find(p => p.id === productId);
+  return products ? products.find(p => p.id === productId) : null;
 }
 
-// Calculer les détails d'une commande (prix de ligne, total...) en reliant les entités (map)
 export function calculateOrderDetails(order, customers, products) {
   const customer = getCustomerById(customers, order.customerId);
   
   let total = 0;
-  const itemsWithDetails = order.items.map(item => {
+  const items = order.items || [];
+  const itemsWithDetails = items.map(item => {
     const product = getProductById(products, item.productId);
     const price = product ? product.price : 0;
     const lineTotal = price * item.quantity;
@@ -37,26 +35,26 @@ export function calculateOrderDetails(order, customers, products) {
   };
 }
 
-// Filtrer et rechercher les commandes selon les critères (filter, map)
 export function getFilteredOrders(state) {
+  if (!state || !state.orders) return [];
+
+  const searchQuery = (state.searchQuery || "").toLowerCase();
+  const selectedStatus = state.selectedStatus || "All";
+  const selectedCategory = state.selectedCategory || "All";
+
   return state.orders
     .map(order => calculateOrderDetails(order, state.customers, state.products))
     .filter(order => {
-      // 1. Recherche par nom de client
-      const matchesSearch = order.customerName.toLowerCase().includes(state.searchQuery.toLowerCase());
-      
-      // 2. Filtre par statut
-      const matchesStatus = state.selectedStatus === "All" || order.status === state.selectedStatus;
-      
-      // 3. Filtre par catégorie de produit
-      const matchesCategory = state.selectedCategory === "All" || order.itemsWithDetails.some(item => item.category === state.selectedCategory);
+      const matchesSearch = order.customerName.toLowerCase().includes(searchQuery);
+      const matchesStatus = selectedStatus === "All" || order.status === selectedStatus;
+      const matchesCategory = selectedCategory === "All" || order.itemsWithDetails.some(item => item.category === selectedCategory);
 
       return matchesSearch && matchesStatus && matchesCategory;
     });
 }
 
-// Calculer le montant cumulé total de toutes les commandes (forEach)
 export function calculateTotalRevenue(orders, customers, products) {
+  if (!orders) return 0;
   let grandTotal = 0;
   orders.forEach(order => {
     const details = calculateOrderDetails(order, customers, products);
@@ -64,4 +62,3 @@ export function calculateTotalRevenue(orders, customers, products) {
   });
   return grandTotal;
 }
-```[cite: 3, 4, 5]

@@ -55,15 +55,8 @@
                 <div class="col-md-4">
                     <input type="text" id="searchInput" class="form-control" placeholder="Rechercher par client...">
                 </div>
-                <div class="col-md-8 d-flex gap-2 flex-wrap align-items-center">
-                    <button id="btnAll" class="btn btn-outline-secondary btn-sm">Tous les statuts</button>
-                    <button class="btn btn-outline-success btn-sm status-btn" data-status="Livrée">Livrée</button>
-                    <button class="btn btn-outline-warning btn-sm status-btn" data-status="En attente">En attente</button>
-                </div>
             </div>
         </div>
-
-        <p id="resultCount" class="text-muted fw-semibold mb-2"></p>
 
         <!-- Tableau des commandes -->
         <div class="card shadow-sm border-0">
@@ -105,7 +98,7 @@
                     <p><strong>Paiement :</strong> <span id="modalPayment"></span></p>
                     <p><strong>Date :</strong> <span id="modalDate"></span></p>
                     <h6 class="mt-4">Produits commandés :</h6>
-                    <p class="p-3 bg-light rounded" id="modalDescription"></p>
+                    <div class="p-3 bg-light rounded" id="modalDescription"></div>
                 </div>
             </div>
         </div>

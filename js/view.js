@@ -1,30 +1,36 @@
 import { getFilteredOrders, calculateTotalRevenue } from "./selectors.js";
 
-// Rendu principal de l'application
 export function render(state) {
   renderIndicators(state);
   renderOrdersTable(state);
 }
 
-// Affichage des indicateurs dynamiques (clients, produits, commandes, chiffre d'affaires)
 function renderIndicators(state) {
-  document.getElementById("total-customers").textContent = state.customers.length;
-  document.getElementById("total-products").textContent = state.products.length;
-  document.getElementById("total-orders").textContent = state.orders.length;
+  const setElText = (id, text) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = text;
+  };
+
+  const totalOrders = state.orders?.length || 0;
+  setElText("totalOrders", totalOrders);
   
-  const totalRevenue = calculateTotalRevenue(state.orders, state.customers, state.products);
-  document.getElementById("total-revenue").textContent = `${totalRevenue} MAD`;
+  const deliveredCount = state.orders?.filter(o => o.status === "Livrée" || o.status === "Livree").length || 0;
+  setElText("deliveredOrders", deliveredCount);
+  setElText("paidOrders", totalOrders);
+  
+  const totalRevenue = calculateTotalRevenue(state.orders || [], state.customers || [], state.products || []);
+  setElText("totalAmount", `${totalRevenue} DH`);
 }
 
-// Affichage du tableau des commandes dans le DOM
 function renderOrdersTable(state) {
-  const tbody = document.getElementById("orders-table-body");
-  const filteredOrders = getFilteredOrders(state);
-  
+  const tbody = document.getElementById("ordersTableBody");
+  if (!tbody) return;
+
+  const filteredOrders = getFilteredOrders(state) || [];
   tbody.innerHTML = "";
 
   if (filteredOrders.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="6" class="text-center py-3">Aucune commande trouvée.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="7" class="text-center py-3">Aucune commande trouvée.</td></tr>`;
     return;
   }
 
@@ -32,18 +38,19 @@ function renderOrdersTable(state) {
     const tr = document.createElement("tr");
     
     let badgeClass = "bg-secondary";
-    if (order.status === "Livree") badgeClass = "bg-success";
+    if (order.status === "Livrée" || order.status === "Livree") badgeClass = "bg-success";
     if (order.status === "En attente") badgeClass = "bg-warning text-dark";
     if (order.status === "Annulee") badgeClass = "bg-danger";
 
     tr.innerHTML = `
       <td>#${order.id}</td>
       <td>${order.customerName}</td>
-      <td>${order.date}</td>
+      <td><strong>${order.total} DH</strong></td>
       <td><span class="badge ${badgeClass}">${order.status}</span></td>
-      <td><strong>${order.total} MAD</strong></td>
+      <td>Payé</td>
+      <td>${order.date}</td>
       <td>
-        <button class="btn btn-sm btn-info text-white view-details-btn" data-id="${order.id}">
+        <button class="btn btn-sm btn-outline-primary view-details-btn" data-id="${order.id}">
           <i class="bi bi-eye"></i> Détail
         </button>
       </td>
@@ -52,38 +59,39 @@ function renderOrdersTable(state) {
   });
 }
 
-// Affichage du modal Bootstrap contenant les détails complets d'une commande
 export function showOrderModal(order) {
-  document.getElementById("modal-order-id").textContent = order.id;
-  document.getElementById("modal-customer-name").textContent = order.customerName;
-  document.getElementById("modal-customer-city").textContent = order.customerCity;
-  document.getElementById("modal-order-date").textContent = order.date;
-  document.getElementById("modal-order-status").textContent = order.status;
-  document.getElementById("modal-order-total").textContent = `${order.total} MAD`;
+  const setElText = (id, text) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = text;
+  };
 
-  const itemsTbody = document.getElementById("modal-order-items");
-  itemsTbody.innerHTML = "";
+  setElText("modalClient", order.customerName);
+  setElText("modalAmount", `${order.total} DH`);
+  setElText("modalStatus", order.status);
+  setElText("modalPayment", "Payé");
+  setElText("modalDate", order.date);
 
-  order.itemsWithDetails.forEach(item => {
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
-      <td>${item.productName} (${item.category})</td>
-      <td>${item.price} MAD</td>
-      <td>${item.quantity}</td>
-      <td><strong>${item.lineTotal} MAD</strong></td>
-    `;
-    itemsTbody.appendChild(tr);
-  });
+  const descEl = document.getElementById("modalDescription");
+  if (descEl && order.itemsWithDetails) {
+    let descriptionHTML = "<ul class='mb-0'>";
+    order.itemsWithDetails.forEach(item => {
+      descriptionHTML += `<li>${item.quantity}x ${item.productName} (${item.category}) - ${item.lineTotal} DH</li>`;
+    });
+    descriptionHTML += "</ul>";
+    descEl.innerHTML = descriptionHTML;
+  }
 
-  const modalElement = document.getElementById("orderDetailModal");
-  const modal = new bootstrap.Modal(modalElement);
-  modal.show();
+  const modalElement = document.getElementById("orderModal");
+  if (modalElement && typeof bootstrap !== 'undefined') {
+    const modal = new bootstrap.Modal(modalElement);
+    modal.show();
+  }
 }
 
-// Affichage des erreurs de chargement dans l'interface
 export function renderError(message) {
-  const errorContainer = document.getElementById("error-container");
-  errorContainer.classList.remove("d-none");
-  errorContainer.textContent = message;
+  const errorContainer = document.getElementById("errorMessage");
+  if (errorContainer) {
+    errorContainer.classList.remove("d-none");
+    errorContainer.textContent = message;
+  }
 }
-```[cite: 3, 4, 6]

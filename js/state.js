@@ -6,4 +6,3 @@ export const state = {
   selectedStatus: "All",
   selectedCategory: "All"
 };
-```[cite: 3, 4]
