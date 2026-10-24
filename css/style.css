@@ -1,19 +1,14 @@
-/* =========================================
-   THÈME COFFEE SHOP - CHIC & HAUT DE GAMME
-========================================= */
-
 :root {
-    --coffee-dark: #2c221e;      /* Espresso profond */
-    --coffee-medium: #5c4033;    /* Marron moka raffiné */
-    --coffee-light: #8d6e63;     /* Cappuccino doux */
-    --coffee-bg: #f9f6f0;        /* Fond crème poudré très chic */
-    --card-bg: #ffffff;          /* Blanc pur pour les cartes */
-    --accent-gold: #c5a059;      /* Touche dorée subtile luxe */
+    --coffee-dark: #2c221e;      
+    --coffee-medium: #5c4033;    
+    --coffee-light: #8d6e63;     
+    --coffee-bg: #f9f6f0;        
+    --card-bg: #ffffff;          
+    --accent-gold: #c5a059;     
 }
 
 body {
-    /* Fond avec image de café en arrière-plan et voile crème subtil pour garder la lisibilité */
-    /* Remplace '../images/coffee-bg.jpg' par le chemin exact de ton image dans ton dossier */
+   
     background: linear-gradient(rgba(249, 246, 240, 0.93), rgba(249, 246, 240, 0.93)), 
                 url('../images/coffee-bg.jpg') no-repeat center center fixed !important;
     background-size: cover !important;
@@ -22,7 +17,6 @@ body {
     letter-spacing: 0.2px;
 }
 
-/* En-tête principal élégant */
 h1.text-center {
     color: var(--coffee-dark) !important;
     font-weight: 800;
@@ -46,7 +40,6 @@ h1.text-center::after {
     border-radius: 2px;
 }
 
-/* Cartes statistiques chics (Effet verre / ombre douce) */
 .p-3.bg-white, .stat-card {
     background-color: var(--card-bg) !important;
     border: 1px solid rgba(141, 110, 99, 0.15) !important;
@@ -68,7 +61,6 @@ h1.text-center::after {
     font-weight: 600;
 }
 
-/* Barre de recherche et filtres haut de gamme */
 .form-control, .form-select {
     border: 1px solid #dcd3cc !important;
     background-color: #ffffff !important;
@@ -83,7 +75,6 @@ h1.text-center::after {
     box-shadow: 0 0 0 3px rgba(141, 110, 99, 0.15) !important;
 }
 
-/* Boutons de filtres sophistiqués */
 .btn-outline-secondary, .btn-outline-success, .btn-outline-warning, .status-btn {
     border-radius: 8px !important;
     font-weight: 500;
@@ -91,7 +82,7 @@ h1.text-center::after {
     transition: all 0.2s ease;
 }
 
-/* Tableau ultra-chic avec effet coins arrondis */
+
 .card.shadow-sm {
     border: none !important;
     border-radius: 14px !important;
@@ -126,7 +117,7 @@ h1.text-center::after {
     background-color: rgba(249, 246, 240, 0.6) !important;
 }
 
-/* Badges de statut raffinés */
+
 .badge, .status {
     padding: 6px 12px !important;
     border-radius: 20px !important;
@@ -135,7 +126,7 @@ h1.text-center::after {
     letter-spacing: 0.5px;
 }
 
-/* Bouton Voir chic */
+
 .btn-outline-secondary.view-btn, .table .btn {
     border-color: #dcd3cc !important;
     color: var(--coffee-medium) !important;
