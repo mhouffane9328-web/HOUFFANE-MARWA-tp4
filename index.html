@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>BookStore</title>
+
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <main class="container">
+    <header>
+      <h1>BookStore</h1>
+      <p>Découvrez notre sélection de livres.</p>
+    </header>
+
+    <section class="filters" aria-label="Recherche et filtres">
+      <div class="field">
+        <label for="searchInput">Rechercher un livre</label>
+
+        <input
+          type="search"
+          id="searchInput"
+          placeholder="Titre ou auteur..."
+        >
+      </div>
+
+      <div class="field">
+        <label for="categoryFilter">Catégorie</label>
+
+        <select id="categoryFilter">
+          <option value="all">Toutes les catégories</option>
+          <option value="Roman">Roman</option>
+          <option value="Informatique">Informatique</option>
+          <option value="Développement personnel">
+            Développement personnel
+          </option>
+        </select>
+      </div>
+    </section>
+
+    <p id="bookCount" class="count" aria-live="polite"></p>
+
+    <section
+      id="booksContainer"
+      class="books"
+      aria-label="Liste des livres"
+    ></section>
+  </main>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
